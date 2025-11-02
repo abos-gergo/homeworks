@@ -1,0 +1,63 @@
+# -------------------------------
+# LaTeX intermediate & output files
+# -------------------------------
+*.aux
+*.bbl
+*.bbl-SAVE-ERROR
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.run.xml
+*.pdfsync
+*.synctex(busy)
+*.tmp
+*.vrb
+*.xdv
+
+# -------------------------------
+# Build directories
+# -------------------------------
+latex.out/
+out/
+build/
+dist/
+_cache/
+.cache/
+_temp/
+tmp/
+
+# -------------------------------
+# VS Code / LaTeX Workshop
+# -------------------------------
+.vscode/
+*.code-workspace
+*.latexmk
+*.synctex.gz(busy)
+
+# -------------------------------
+# OS-specific junk
+# -------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -------------------------------
+# Backup files
+# -------------------------------
+*~
+*.bak
+*.backup
+*.swp
+*.swo
