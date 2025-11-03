@@ -38,13 +38,13 @@
 
 % Címlap és tartalomjegyzék
 % \input{contents/01_title.tex}
-\includepdf[pages=1]{contents/stha3.pdf} % feladatlap beszúrása, ha szükséges
+\includepdf[pages=1]{contents/stha3_filled.pdf} % feladatlap beszúrása, ha szükséges
 % \input{contents/02_contentpage.tex}
 % --------------------------------------------------
 % 0. fejezet
 % --------------------------------------------------
 \section{Maßstäbliche Abbildung, Lagerreaktionen}
-\begin{figure}[h!]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}[
       thick, % Default line thickness
@@ -110,7 +110,7 @@
 
 Vor der Rechnungen zeichne ich erstmal ein Freiköperbild (\figref{fig:Freikörperbild}). Das Fachwerk wird als ein Starrkörper dargestellt, die Lager werden durch Reaktionskräfte ersetzt.
 
-\begin{figure}[h!]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}[
       thick, % Default line thickness
@@ -166,88 +166,349 @@ Für einen im Gleichgewicht befindlichen Starrkörper gelten drei Gleichungen zu
   \label{eq:glgw2}
   &\sum F_Y = F_{AY} + F_{BY} - F_1 - F_2 = 0 \\
   \label{eq:glgw3}
-  &\sum M_A = a \cdot F_{BY} - (a + b) \cdot F_1 - 2c \cdot F_3 = 0
+  &\sum M_A = a \cdot F_{BY} - (a + b) \cdot F_1 - 2c \cdot F_3 = 0\\
 \end{align}
 
 Von \hyperref[eq:glgw1]{(\ref*{eq:glgw1})}:
 \begin{align*}
-  \boxed{F_{AX} = -13\,\text{kN}}
+  \boxed{F_{AX} = -13\,\text{kN}}\\
 \end{align*}
 
 Von \hyperref[eq:glgw2]{(\ref*{eq:glgw2})}:
 \begin{align*}
-  \boxed{F_{BY} = 69,375\,\text{kN}}
+  \boxed{F_{BY} = 69,375\,\text{kN}}\\
 \end{align*}
 
 Von \hyperref[eq:glgw3]{(\ref*{eq:glgw3})}:
 \begin{align*}
-  \boxed{F_{AY} = 0,625\,\text{kN}}
+  \boxed{F_{AY} = 0,625\,\text{kN}}\\
 \end{align*}
 
-\section{Stabkräfte mit Knotenpunktverfahren}
+\begin{minipage}{\textwidth}
+  \section{Stabkräfte mit Knotenpunktverfahren}
+  \label{sec:Knotenpunktverfahren}
 
-Da sich alle sechs (A-F) Knotenpunkte im Gleichgewicht befinden, gelten für jeden Punkt zwei Gleichungen:
+  Weil das Fachwerk sich im Gleichgewicht befindet, müssen alle sechs (A-F) Knotenpunkte im Gleichgewicht sein. Für jeden Punkt gelten zwei Gleichungen:
+  \setcounter{equation}{0}
+  \begin{align}
+    &\sum F_X = 0 \\
+    &\sum F_Y = 0\\
+  \end{align}
+
+  \subsection{Für Punkt B}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        thick, % Default line thickness
+        >=Stealth, % Default arrow tip
+        force/.style={blue, very thick, ->}, % Style for force arrows
+      ]
+      % Größen
+      \def\lange{30pt}
+      % Koordinaten von Punkte
+      \coordinate (O) at (0, 0);
+      % Kräfte
+      \draw[force] (O) -- ($(O) + (0, \lange)$)
+      node[right, black] {$\mathbf{F_{S6}}$};
+      \draw[force] ($(O) + (0, -\lange)$) -- (O)
+      node[below right, black, yshift=-10pt] {$\mathbf{F_{BY}}$};
+      \draw[force] (O) -- ($(O) + (-\lange, 0)$)
+      node[above, black] {$\mathbf{F_2}$};
+      %Punkt mit Beschrift
+      \node[right]  at (O) {$B$};
+
+    \end{tikzpicture}
+  \end{figure}
+  \begin{align*}
+    &\sum F_X = F_{S1} = 0\\
+    &\boxed{F_{S1} = 0\,\text{kN}}\\
+    &\sum F_Y = F_{BY} + F_{S6} = 0 \\
+    &\boxed{F_{S6} = -69{,}375\,\text{kN}}\\
+  \end{align*}
+\end{minipage}
+\begin{minipage}{\textwidth}
+  \subsection{Für Punkt A}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        thick, % Default line thickness
+        >=Stealth, % Default arrow tip
+        force/.style={blue, very thick, ->}, % Style for force arrows
+      ]
+      % Größen
+      \def\lange{30pt}
+      % Koordinaten von Punkte
+      \coordinate (O) at (0, 0);
+      % Kräfte
+      \draw[force] (O) -- ($(O) + (0, \lange)$)
+      node[above, black] {$\mathbf{F_{S2}}$};
+      \draw[force] ($(O) + (0, -\lange)$) -- (O)
+      node[below, black, yshift=-25pt] {$\mathbf{F_{AY}}$};
+      \draw[force] (O) -- ($(O) + (\lange, 0)$)
+      node[right, black] {$\mathbf{F_{S1}}$};
+      \draw[force] ($(O) + (-\lange, 0)$) -- (O)
+      node[left, black, xshift=-25pt] {$\mathbf{F_{AX}}$};
+      \draw ($(O) + (\lange / 3 * 2, 0)$) arc (0:43.152:\lange / 3 * 2)
+      node[below, black, xshift=-1pt] {$\mathbf{\alpha}$};
+      \draw[force] (O) -- ++(43.152:\lange)
+      node[above right, black] {$\mathbf{F_{S5}}$};
+      %Punkt mit Beschrift
+      \node[below right]  at (O) {$A$};
+
+    \end{tikzpicture}
+  \end{figure}
+  \begin{align*}
+    &\alpha = \tan \frac{c}{a} = 43{,}152^\circ & (Wurde~von~Abbildung~abgelesen)&\\
+    \\
+    &\sum F_X = F_{AX} + F_{S1} + F_{S5} \cdot \cos 43,152^\circ = 0 \\
+    &\boxed{F_{S5} = 17,819\,\text{kN}}\\
+    &\sum F_Y = F_{AY} + F_{S2} + F_{S5} \cdot \sin 43,152^\circ = 0 \\
+    &\boxed{F_{S2} = -12,812\,\text{kN}}\\
+  \end{align*}
+\end{minipage}
+\begin{minipage}{\textwidth}
+  \subsection{Für Punkt C}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        thick, % Default line thickness
+        >=Stealth, % Default arrow tip
+        force/.style={blue, very thick, ->}, % Style for force arrows
+      ]
+      % Größen
+      \def\lange{30pt}
+      % Koordinaten von Punkte
+      \coordinate (O) at (0, 0);
+      % Kräfte
+      \draw[force] (O) -- ($(O) + (0, \lange)$)
+      node[above, black] {$\mathbf{F_{S3}}$};
+      \draw[force] (O) -- ($(O) + (0, -\lange)$)
+      node[below, black] {$\mathbf{F_{S2}}$};
+      \draw[force] (O) -- ($(O) + (\lange, 0)$)
+      node[right, black] {$\mathbf{F_{S4}}$};
+
+      %Punkt mit Beschrift
+      \node[below right]  at (O) {$C$};
+
+    \end{tikzpicture}
+  \end{figure}
+  \begin{align*}
+    &\sum F_X = F_{S4} = 0 \\
+    &\boxed{F_{S4} = 0\,\text{kN}}\\
+    &\sum F_Y = F_{S3} - F_{S2} = 0\\
+    &\boxed{F_{S3} = -12,812\,\text{kN}}\\
+  \end{align*}
+\end{minipage}
+\begin{minipage}{\textwidth}
+  \subsection{Für Punkt E}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        thick, % Default line thickness
+        >=Stealth, % Default arrow tip
+        force/.style={blue, very thick, ->}, % Style for force arrows
+      ]
+      % Größen
+      \def\lange{30pt}
+      % Koordinaten von Punkte
+      \coordinate (O) at (0, 0);
+      % Kräfte
+      \draw[force] ($(O) + (0, \lange)$) -- (O)
+      node[above left, black] {$\mathbf{F_{2}}$};
+      \draw[force] (O) -- ($(O) + (0, -\lange)$)
+      node[below, black] {$\mathbf{F_{S3}}$};
+      \draw[force] (O) -- ($(O) + (\lange, 0)$)
+      node[right, black] {$\mathbf{F_{S9}}$};
+      \draw ($(O) + (\lange / 3 * 2, 0)$) arc (0:-43.152:\lange / 3 * 2)
+      node[above, black, xshift=-1pt] {$\mathbf{\alpha}$};
+      \draw[force] (O) -- ++(-43.152:\lange)
+      node[below right, black] {$\mathbf{F_{S7}}$};
+      %Punkt mit Beschrift
+      \node[above right]  at (O) {$E$};
+
+    \end{tikzpicture}
+  \end{figure}
+  \begin{align*}
+    &\alpha = \tan \frac{-c}{a} = -43{,}152^\circ & (Wurde~von~Abbildung~abgelesen)&\\
+    \\
+    &\sum F_Y = -F_{2} - F_{S3} + F_{S7} \cdot \sin (-43,152^\circ) = 0 \\
+    &\boxed{F_{S7} = -54,373\,\text{kN}}\\
+    &\sum F_X = F_{S9} + F_{S7} \cdot \cos (-43,152^\circ) = 0 \\
+    &\boxed{F_{S9} = 39,667\,\text{kN}}\\
+  \end{align*}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+  \subsection{Für Punkt F}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        thick, % Default line thickness
+        >=Stealth, % Default arrow tip
+        force/.style={blue, very thick, ->}, % Style for force arrows
+      ]
+      % Größen
+      \def\lange{30pt}
+      % Koordinaten von Punkte
+      \coordinate (O) at (0, 0);
+      % Kräfte
+      \draw[force] (O) -- ($(O) + (0, -\lange)$)
+      node[below, black] {$\mathbf{F_{1}}$};
+      \draw[force] (O) -- ($(O) + (\lange, 0)$)
+      node[right, black] {$\mathbf{F_{3}}$};
+      \draw[force] (O) -- ($(O) + (-\lange, 0)$)
+      node[left, black] {$\mathbf{F_{S9}}$};
+      \draw ($(O) + (\lange / 2, 0)$) arc (0:-143.13:\lange / 2)
+      node[right, black, yshift = -1pt, xshift=9pt, yshift=4pt] {$\mathbf{\alpha}$};
+      \draw[force] (O) -- ++(-143.13:\lange)
+      node[below left, black] {$\mathbf{F_{S8}}$};
+      %Punkt mit Beschrift
+      \node[above]  at (O) {$F$};
+
+    \end{tikzpicture}
+  \end{figure}
+  \begin{align*}
+    &\alpha = 90^\circ + \tan \frac{-b}{-c} = -143{,}13^\circ & (Wurde~von~Abbildung~abgelesen)&\\
+    \\
+    &\sum F_X = F_{3} - F_{S9} + F_{S8} \cdot \cos (-143,13^\circ) = 0 \\
+    &\boxed{F_{S8} = -33,334\,\text{kN}}\\
+  \end{align*}
+\end{minipage}
+
+\subsection{Überprüfung}
+Die zweite Gleichung für Punkt F kann für Überprufung benutzt werden:
+\begin{align*}
+  \sum F_Y = -F_{1} + F_{S8} \cdot \sin (-143,13^\circ) &= 0 \\
+  F_{S8} \cdot \sin (-143,13^\circ) &= F_1 \\
+  20 &= 20\\
+\end{align*}
+\section{Stabkraft im Stab 5 mit Schnittverfahren}
+\label{sec:Schnittverfahren}
+\subsection{Schnittlinie bestimmen}
+Das Fachwerk wird mit einer (rot dargestellten) Schnittlinie in zwei Teilkörper getrennt.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[
+      thick, % Default line thickness
+      >=Stealth, % Default arrow tip
+      force/.style={blue, very thick, ->}, % Style for force arrows
+      dimline/.style={thin, <->, >=latex}, % Style for dimension lines
+    ]
+
+    % Größen
+    \def\va{1.6pt * 75}
+    \def\vb{2.0pt * 75}
+    \def\vc{1.5pt * 75}
+    \def\vfone{20pt}
+    \def\vftwo{50pt}
+    \def\vfthree{13pt}
+
+    % Koordinaten von Punkte
+    \coordinate (A) at (0, 0);
+    \coordinate (B) at (\va, 0);
+    \coordinate (C) at (0, \vc);
+    \coordinate (D) at (\va, \vc);
+    \coordinate (E) at (0, \vc * 2);
+    \coordinate (F) at (\va + \vb, \vc * 2);
+
+    % Beschriftungen von Punkte
+    \node[left]  at (A) {$A$};
+    \node[right] at (B) {$B$};
+    \node[left]  at (C) {$C$};
+    \node[right] at (D) {$D$};
+    \node[left]  at (E) {$E$};
+    \node[above] at (F) {$F$};
+
+    % Fachwerk Stäber
+    \foreach \i/\j/\k in {A/B/D, A/C/D, C/D/E, D/E/F}
+    \draw[draw=black, line width = 1.5pt, join=round] (\i) -- (\j) -- (\k) -- cycle;
+
+    \node[above left, yshift=9pt, xshift=14pt] at ($(A)!0.5!(D)$) {Stab 5};
+    % Linie vom Mittelpunkt zwischen A–C bis Mittelpunkt zwischen A–B
+    \draw[red, line width=3pt] ($(A)!0.5!(C)$) -- ($(D)!0.75!(B)$);
+  \end{tikzpicture}
+\end{figure}
+Diese Schnittlinie erfüllt alle Bedingungen des Schnittverfahrens.
+
+\subsection{Berechung von Stabkräfte}
+Die beiden Teilkörper sind ausschließlich durch drei Stäbe miteinander verbunden.
+Werden die Stabkräfte als äußere Kräfte angesetzt, so muss für jeden Teil das Gleichgewicht erfüllt sein.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[
+      thick, % Default line thickness
+      >=Stealth, % Default arrow tip
+      force/.style={blue, very thick, ->}, % Style for force arrows
+      dimline/.style={thin, <->, >=latex}, % Style for dimension lines
+    ]
+
+    % Größen
+    \def\va{1.6pt * 75}
+    \def\vb{2.0pt * 75}
+    \def\vc{1.5pt * 75}
+    \def\vfone{20pt}
+    \def\vftwo{50pt}
+    \def\vfthree{13pt}
+
+    % Koordinaten von Punkte
+    \coordinate (A) at (0, 0);
+    \coordinate (B) at (\va, 0);
+    \coordinate (C) at (0, \vc/2);
+    \coordinate (D) at (\va, \vc / 2);
+
+    % Beschriftungen von Punkte
+    \node[below left]  at (A) {$A$};
+    \node[right] at (B) {$B$};
+
+    \draw[line width=2pt] (A) -- (B);
+    \draw[force] (A) -- (C)
+    node[left, black] {$\mathbf{F_{S2}}$};
+    \draw[force] (B) -- (D)
+    node[right, black] {$\mathbf{F_{S6}}$};
+    \draw[force] (A) -- (\va/2, \vc/2)
+    node[above, black] {$\mathbf{F_{S5}}$};
+    \draw[force] ($(A) + (0, -\vc/2)$) -- (A)
+    node[below right, black] {$\mathbf{F_{AY}}$};
+    \draw[force] ($(A) + (-\vc/2, 0)$) -- (A)
+    node[above left, black] {$\mathbf{F_{AX}}$};
+    \draw[force] ($(B) + (0, -\vc/2)$) -- (B)
+    node[below left, black] {$\mathbf{F_{BY}}$};
+  \end{tikzpicture}
+  \caption{Freigeschneidene Teilkörper}
+\end{figure}
+
+Da jeder Teilkörper im Gleichgewicht sein muss, gelten die drei Gleichgewichtsgleichungen:
 \setcounter{equation}{0}
 \begin{align}
-  &\sum F_X = 0 \\
-  &\sum F_Y = 0
+  &\sum F_X = F_{AX} + F_{S5} \cdot \cos 43,152^\circ = 0\\
+  &\sum F_Y = F_{AY} + F_{BY} + F_{S2} + F_{S6} + F_{S5} \cdot \sin 43,152^\circ = 0\\
+  &\sum M_A = a \cdot F_{BY} + a \cdot F_{S6} = 0\\
 \end{align}
+Die drei Stabkräfte sind unbekannt. Aus der Lösung der drei Gleichungen ergibt sich:
 
-1. Für Punkt B:
-\begin{figure}[h!]
-  \centering
-  \begin{tikzpicture}[
-      thick, % Default line thickness
-      >=Stealth, % Default arrow tip
-      force/.style={blue, very thick, ->}, % Style for force arrows
-    ]
-    % Größen
-    \def\lange{30pt}
-    % Koordinaten von Punkte
-    \coordinate (O) at (0, 0);
-    % Kräfte
-    \draw[force] (O) -- ($(O) + (0, \lange)$)
-    node[right, black] {$\mathbf{F_{S6}}$};
-    \draw[force] ($(O) + (0, -\lange)$) -- (O)
-    node[below right, black, yshift=-10pt] {$\mathbf{F_{BY}}$};
-    \draw[force] (O) -- ($(O) + (-\lange, 0)$)
-    node[above, black] {$\mathbf{F_2}$};
-    %Punkt mit Beschrift
-    \node[right]  at (O) {$B$};
+\begin{center}
+  \boxed{
+    \begin{aligned}
+      &F_{S6} = -69,375\,\text{kN}\\
+      &F_{S5} = 17,819\,\text{kN}\\
+      &F_{S2} = -12,812\,\text{kN}\\
+    \end{aligned}
+  }
+\end{center}
 
-  \end{tikzpicture}
-\end{figure}
-\begin{align*}
-  &\sum F_X = F_{S1} = 0 & \sum F_Y = F_{BY} + F_{S6} = 0& \\
-  &\boxed{F_{S1} = 0} & \boxed{F_{S6} = -69{,}375}&
-\end{align*}
+\section{Vergleichung von Lösungen}
+$F_{S2}, F_{S5}, F_{S6}$ wurden mit zwei unterschiedliche Methoden (\hyperref[sec:Knotenpunktverfahren]{Knotenpunktverfahren} und \hyperref[sec:Schnittverfahren]{Schnittverfahren}) berechnet.
+Beide Methode sollten identische Ergebnisse liefern, da die Lösung unabhängig vom gewählten Verfahren ist.
 
-2. Für Punkt A:
-\begin{figure}[h!]
-  \centering
-  \begin{tikzpicture}[
-      thick, % Default line thickness
-      >=Stealth, % Default arrow tip
-      force/.style={blue, very thick, ->}, % Style for force arrows
-    ]
-    % Größen
-    \def\lange{30pt}
-    % Koordinaten von Punkte
-    \coordinate (O) at (0, 0);
-    % Kräfte
-    \draw[force] (O) -- ($(O) + (0, \lange)$)
-    node[right, black] {$\mathbf{F_{S6}}$};
-    \draw[force] ($(O) + (0, -\lange)$) -- (O)
-    node[below right, black, yshift=-10pt] {$\mathbf{F_{BY}}$};
-    \draw[force] (O) -- ($(O) + (-\lange, 0)$)
-    node[above, black] {$\mathbf{F_2}$};
-    %Punkt mit Beschrift
-    \node[right]  at (O) {$B$};
+Die Berechnungen bestätigen diese Theorie – die Ergebnisse stimmen vollständig überein.
 
-  \end{tikzpicture}
-\end{figure}
-\begin{align*}
-  &\sum F_X = F_{S1} = 0 & \sum F_Y = F_{BY} + F_{S6} = 0& \\
-  &\boxed{F_{S1} = 0} & \boxed{F_{S6} = -69{,}375}&
-\end{align*}
-\end{document}
+\section{Überprüfung mit Computer-Rechnung}
+Das Fachwerk wurde auf der Webseite \href{https://www.trussanalysis.com/free?cat=custom&cnodes=0%7E0%7Ep%7E0%7E0_1.6%7E0%7Er%7E0%7E0_0%7E1.5%7Ef%7E0%7E0_1.6%7E1.5%7Ef%7E0%7E0_0%7E3%7Ef%7E0%7E50_3.6%7E3%7Ef%7E13%7E20&cmems=0%7E1%7E1%7E1_0%7E2%7E1%7E1_1%7E3%7E1%7E1_0%7E3%7E1%7E1_2%7E4%7E1%7E1_3%7E5%7E1%7E1_4%7E5%7E1%7E1_2%7E3%7E1%7E1_4%7E3%7E1%7E1}{Truss Analysis} modelliert.
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{contents/trussanalysis.png}
+    \caption{Ergebnis der Analyse}
+  \end{figure}
+
+  Die Ergebnisse der Analyse übereinstimmen mit der vorherige Lösüngen.
+  \end{document}
