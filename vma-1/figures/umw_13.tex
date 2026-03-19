@@ -1,0 +1,37 @@
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \begin{circuitikz}[
+        dot_label/.style={
+          draw, circle,
+          inner sep=0.5pt, minimum size=1.5em,
+          fill=white,
+          font=\small\bfseries
+        }
+      ]
+
+      \coordinate (NEW1)at (0, 3);
+      \coordinate (NEW2)at (6, 3);
+
+      \draw[blue] (P1) to[] (NEW1);
+      \draw[blue] (P2) to[] (NEW2);
+      \draw[blue] (NEW1) to[R, l=$R_{Gesamt}$] (NEW2);
+
+      \coordinate (C12B2) at (6, 4.5);
+      \coordinate (C12B1) at (0, 4.5);
+
+      \draw[red] (P1) to[R, l=$R_{12}$] (P2);
+
+      \draw[red] (C12A1) to[R, l=$R_{12A}$] (C12A2);
+      \draw[red] (P1) to[] (C12A1);
+      \draw[red] (C12A2) to[] (P2);
+
+      \draw[red] (P1) to[] (C12B1);
+      \draw[red] (P2) to[] (C12B2);
+      \draw[red] (C12B1) to[R, l=$R_{12B}$] (C12B2);
+
+      \node[dot_label] at (P1) {1};
+      \node[dot_label] at (P2) {2};
+    \end{circuitikz}
+  \end{adjustbox}
+\end{figure}

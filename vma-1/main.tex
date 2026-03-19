@@ -1,0 +1,74 @@
+% Dokumentum konfiguráció
+\documentclass[fleqn,12pt]{article}
+% --------------------------------------------------
+% Dokumentum adatok
+% --------------------------------------------------
+
+% Intézmény és kar
+\newcommand\INTEZMENY{Budapesti Műszaki és Gazdaságtudományi Egyetem}
+\newcommand\KAR{Gépészmérnöki Kar}
+\newcommand\LOGO{bme-logo.jpg} % logo fájl neve a figures mappában
+
+% Dokumentum adatok
+\newcommand\CIM{Grundlagen der Mechatronik Hausaufgabe}
+\newcommand\DATUM{2025/26/1}
+\newcommand\NEV{Abos Gergő}
+\newcommand\NEPTUN{C46M9M}
+\newcommand\EMAIL{gergo.abos@gmail.com}
+\newcommand\TANTARGY{Grundlagen der Elektronik}
+\newcommand\TANTARGYKOD{BMEVIAUBSXA060-00}
+
+\usepackage{circuitikz}
+\usepackage{adjustbox}
+
+% --------------------------------------------------
+% Preambulum és egyéni parancsok betöltése
+% --------------------------------------------------
+
+\input{../_settings/00_preambulum.tex}
+\input{../_settings/01_commands.tex}
+\input{../_settings/02_mechTikz.tex}
+
+% ==================================================
+% Dokumentum kezdete
+% ==================================================
+\begin{document}
+
+% Címlap és tartalomjegyzék
+% \input{contents/01_title.tex}
+\includepdf[pages=1]{contents/Aufgabenblatt.pdf} % feladatlap beszúrása, ha szükséges
+\section{Bezeichnungen}
+Im folgenden Dokument werde ich die Umwandlungsschritte darstellen, jeder mit seinem eigenem Schrittnummer, und die dazu gehörende Abbildung darunter. Die zu ersetzende Widerstände werden mit \textbf{Rot} bezeichnet, die neue Widerstände mit \textbf{Blau}. Die berechnungen zu jedem Schritt sind im Excel zu finden.
+
+Erstmal ist die Aufgabe-Netz dagestellt:
+
+\input{figures/start.tex}
+
+\setcounter{section}{0}
+\section{Reihenschaltung vereinfachen}
+\input{figures/umw_1.tex}
+\section{Stern-Dreieck-Umwandlung}
+\input{figures/umw_2.tex}
+\section{Parallelschaltungen vereinfachen}
+\input{figures/umw_3.tex}
+\section{Reihenschaltung vereinfachen}
+\input{figures/umw_4.tex}
+\section{Parallelschaltung vereinfachen}
+\input{figures/umw_5.tex}
+\section{Reihenschaltung vereinfachen}
+\input{figures/umw_6.tex}
+\section{Parallelschaltung vereinfachen}
+\input{figures/umw_7.tex}
+\section{Reihenschaltung vereinfachen}
+\input{figures/umw_8.tex}
+\section{Parallelschaltung vereinfachen}
+\input{figures/umw_9.tex}
+\section{Stern-Dreieck-Umwandlung}
+\input{figures/umw_10.tex}
+\section{Parallelschaltungen vereinfachen}
+\input{figures/umw_11.tex}
+\section{Reihenschaltung vereinfachen}
+\input{figures/umw_12.tex}
+\section{Parallelschaltung vereinfachen}
+\input{figures/umw_13.tex}
+\end{document}

@@ -1,0 +1,42 @@
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \begin{circuitikz}[
+        dot_label/.style={
+          draw, circle,
+          inner sep=0.5pt, minimum size=1.5em,
+          fill=white,
+          font=\small\bfseries
+        }
+      ]
+
+      \coordinate (NEW1) at (7.5, 6);
+      \coordinate (NEW2) at (7.5, 0);
+
+      \draw (P1) to[R, l=$R_{12}$] (P2);
+      \draw (P5) to[R, l=$R_{56}$] (P6);
+      \draw[red] (P6) to[R, l=$R_{67}$] (P7);
+      \draw (P1) to[R, l=$R_{15}$] (P5);
+      \draw (P2) to[R, l=$R_{26}$] (P6);
+      \draw (P5) to[R, l=$R_{25}$] (P2);
+      \draw (C161) to[R, l=$R_{16}$] (C162);
+      \draw (P1) to[] (C161);
+      \draw (C162) to[] (C163);
+      \draw (C163) to[] (C164);
+      \draw (C164) to[] (P6);
+
+      \draw[red] (P2) to[R, l=$R_{27B}$] (P3);
+      \draw[red] (P7) to[] (P3);
+
+      \draw[blue] (NEW1) to[R, l=$R_{26A}$] (NEW2);
+      \draw[blue] (P2) to[] (NEW1);
+      \draw[blue] (P6) to[] (NEW2);
+
+      \node[dot_label] at (P1) {1};
+      \node[dot_label] at (P2) {2};
+      \node[dot_label] at (P5) {5};
+      \node[dot_label] at (P6) {6};
+      \node[dot_label] at (P7) {7};
+    \end{circuitikz}
+  \end{adjustbox}
+\end{figure}

@@ -1,0 +1,74 @@
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \begin{circuitikz}[
+        dot_label/.style={
+          draw, circle,
+          inner sep=0.5pt, minimum size=1.5em,
+          fill=white,
+          font=\small\bfseries
+        }
+      ]
+      \coordinate (P1) at (0, 6);
+      \coordinate (P2) at (6, 6);
+      \coordinate (P3) at (12, 6);
+      \coordinate (P4) at (18, 6);
+      \coordinate (P5) at (0, 0);
+      \coordinate (P6) at (6, 0);
+      \coordinate (P7) at (12, 0);
+      \coordinate (P8) at (18, 0);
+      \coordinate (P9) at (20, 8);
+
+      \coordinate (C89) at (20, 0);
+      \coordinate (C39) at (12, 8);
+
+      \coordinate (C161) at (-2, 6);
+      \coordinate (C162) at (-2, 0);
+      \coordinate (C163) at (-2, -2);
+      \coordinate (C164) at (6, -2);
+
+      \coordinate (NEW1) at (19, 0);
+      \coordinate (NEW2) at (19, 2);
+      \coordinate (NEW3) at (19, 7);
+      \coordinate (NEW4) at (12, 7);
+
+      \draw (P1) to[R, l=$R_{12}$] (P2);
+      \draw (P2) to[R, l=$R_{23}$] (P3);
+      \draw (P3) to[R, l=$R_{34}$] (P4);
+      \draw (P5) to[R, l=$R_{56}$] (P6);
+      \draw (P6) to[R, l=$R_{67}$] (P7);
+      \draw (P7) to[R, l=$R_{78}$] (P8);
+      \draw (P1) to[R, l=$R_{15}$] (P5);
+      \draw (P2) to[R, l=$R_{26}$] (P6);
+      \draw (P3) to[R, l=$R_{37}$] (P7);
+      \draw (P4) to[R, l=$R_{48}$] (P8);
+      \draw[red] (P9) to[R, l=$R_{89}$] (C89);
+      \draw[red] (P9) to[R, l=$R_{39}$] (C39);
+      \draw (P5) to[R, l=$R_{25}$] (P2);
+      \draw (P2) to[R, l=$R_{27}$] (P7);
+      \draw (P7) to[R, l=$R_{47}$] (P4);
+      \draw (C161) to[R, l=$R_{16}$] (C162);
+      \draw (P8) to[] (C89);
+      \draw (P3) to[] (C39);
+      \draw (P1) to[] (C161);
+      \draw (C162) to[] (C163);
+      \draw (C163) to[] (C164);
+      \draw (C164) to[] (P6);
+
+      \draw[blue] (NEW1) to[] (NEW2);
+      \draw[blue] (NEW2) to[R, l=$R_{38}$] (NEW3);
+      \draw[blue] (NEW3) to[] (NEW4);
+
+      \node[dot_label] at (P1) {1};
+      \node[dot_label] at (P2) {2};
+      \node[dot_label] at (P3) {3};
+      \node[dot_label] at (P4) {4};
+      \node[dot_label] at (P5) {5};
+      \node[dot_label] at (P6) {6};
+      \node[dot_label] at (P7) {7};
+      \node[dot_label] at (P8) {8};
+      \node[dot_label] at (P9) {9};
+
+    \end{circuitikz}
+  \end{adjustbox}
+\end{figure}
