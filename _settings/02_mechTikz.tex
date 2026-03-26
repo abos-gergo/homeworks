@@ -15,20 +15,21 @@
   vec/.style = {color=#1,very thick,-latex},
   arc vec/.style={color=#1,very thick, postaction={decorate}, decoration={markings,mark=at position 1 with {\arrow{>}}}},
   arc vec2/.style={color=#1,very thick, postaction={decorate}, decoration={markings,mark=at position 1 with {\arrow{<}}}},
-  force/.style = {color=#1, very thick,-latex},
+  force/.style = {color=red, very thick, ->},
   moment/.style = {color=#1,very thick,-Implies, double distance=1pt},
   coordSys/.style = {color=#1, thin,-latex},
   guide/.style = {color=#1,thin},
   guideVec/.style = {color=#1,latex-latex},
   construct/.style = {color=#1,thick,dashed},
-  support/.style={link={black}, fill=white}
+  support/.style={link={black}, fill=white},
+  > = Stealth
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Saját TikZ parancsok definiálása
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Ezek a parancsok új "rajzelemeket" hoznak létre, 
-% amiket később egyszerűen, rövid paranccsal hívhatunk 
+% Ezek a parancsok új "rajzelemeket" hoznak létre,
+% amiket később egyszerűen, rövid paranccsal hívhatunk
 % meg rajzolás közben (pl. \supporthinge{A}{0}).
 
 % --------------------------------------------------
@@ -138,7 +139,7 @@
   \begin{scope}[shift={(#2)}, rotate=#3, #1]
     % Talaj (felfogatási pont)
     \fill[gray!20!white] (-0.5,-#4-0.25) rectangle (0.5,-#4-0.5);
-    \draw[black, very thick] (-0.5,-#4-0.25) -- (0.5,-#4-0.25); 
+    \draw[black, very thick] (-0.5,-#4-0.25) -- (0.5,-#4-0.25);
     % Kötél
     \draw[black, thick, densely dashed] (0,0) -- (0,-#4-0.25);
     % Pontok
