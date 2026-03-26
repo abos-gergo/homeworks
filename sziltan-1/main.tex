@@ -1,0 +1,41 @@
+% Dokumentum konfiguráció
+\documentclass[fleqn,12pt]{article}
+% --------------------------------------------------
+% Dokumentum adatok
+% --------------------------------------------------
+
+% Intézmény és kar
+\newcommand\INTEZMENY{Budapesti Műszaki és Gazdaságtudományi Egyetem}
+\newcommand\KAR{Gépészmérnöki Kar}
+\newcommand\LOGO{bme-logo.jpg} % logo fájl neve a figures mappában
+
+% Dokumentum adatok
+\newcommand\CIM{Festigkeitslehre Hausaufgabe}
+\newcommand\DATUM{2025/26/1}
+\newcommand\NEV{Abos Gergő}
+\newcommand\NEPTUN{C46M9M}
+\newcommand\EMAIL{gergo.abos@gmail.com}
+\newcommand\TANTARGY{Festigkeitslehre}
+\newcommand\TANTARGYKOD{BMEGEMMBXN2}
+
+% --------------------------------------------------
+% Preambulum és egyéni parancsok betöltése
+% --------------------------------------------------
+
+\input{../_settings/00_preambulum.tex}
+\input{../_settings/01_commands.tex}
+\input{../_settings/02_mechTikz.tex}
+
+% ==================================================
+% Dokumentum kezdete
+% ==================================================
+\begin{document}
+
+% Címlap és tartalomjegyzék
+% \input{contents/01_title.tex}
+\includepdf{contents/Aufgabenblatt.pdf} % feladatlap beszúrása, ha szükséges
+\input{contents/1_reaktionskrafte.tex}
+\input{contents/2_stabbelastungen.tex}
+\input{contents/3_schnittgrossen.tex}
+\input{contents/4_reinebiegung.tex}
+\end{document}

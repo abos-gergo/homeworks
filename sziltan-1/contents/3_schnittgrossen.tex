@@ -1,0 +1,199 @@
+\section{Schnittgrößen von Stab 1}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[thick]
+    \def\mscale{3};
+    \def\a{0.5 * \mscale};
+    \def\b{2.0 * \mscale};
+    \def\c{2.0 * \mscale};
+    \def\h{0.433 * \mscale};
+
+    \def\kNscale{0.5};
+    \def\G{3 * \kNscale};
+
+    \def\kNmscale{1.25};
+    \def\p{0.5 * \kNmscale};
+
+    \draw[vec={red}] (E) -- ++(0, -1) node[left] {$G$};
+
+    \fill[pattern=vertical lines, pattern color=red] (C) rectangle ($(E) + (0, \p)$);
+    \draw[red] (C) rectangle ($(E) + (0, \p)$);
+    \draw[force={red}] ($(E) + (0, \p)$) -- (E) node[midway, right] {$p$};
+
+    \draw (D) -- (C);
+    \draw (D) -- (E);
+
+    \draw[force] (C) -- ($ (C)!1cm!(A) $) node[below] {$S_5$};
+
+    \draw[force] (C) -- ($ (C)!1cm!(B) $) node[left] {$S_3$};
+    \draw[force] (D) -- ($ (D)!1cm!(B) $) node[right] {$S_2$};
+
+  \end{tikzpicture}
+  \caption{Freikörperbild von Stab 1}
+\end{figure}
+
+Alle Kräfte werden zerlegt in x und y Komponente:
+\begin{align*}
+  \mathbf{S_5} &=
+  \begin{pmatrix} S_{5X} \\ S_{5Y}
+  \end{pmatrix}
+  =
+  \begin{pmatrix} A_X \\ A_Y
+  \end{pmatrix}
+  =
+  \begin{pmatrix} -16{,}422 \\ -3{,}556
+  \end{pmatrix} \text{kN} \\[2ex]
+  \mathbf{S_3} &=
+  \begin{pmatrix} S_3 \cdot \cos(-60^\circ) \\ S_3 \cdot \sin(-60^\circ)
+  \end{pmatrix}
+  =
+  \begin{pmatrix} 11{,}916 \cdot 0{,}5 \\ 11{,}916 \cdot \left(-\frac{\sqrt{3}}{2}\right)
+  \end{pmatrix}
+  =
+  \begin{pmatrix} 5{,}958 \\ -10{,}320
+  \end{pmatrix} \text{kN} \\[2ex]
+  \mathbf{S_2} &=
+  \begin{pmatrix} S_2 \cdot \cos(-120^\circ) \\ S_2 \cdot \sin(-120^\circ)
+  \end{pmatrix}
+  =
+  \begin{pmatrix} -20{,}928 \cdot (-0{,}5) \\ -20{,}928 \cdot \left(-\frac{\sqrt{3}}{2}\right)
+  \end{pmatrix}
+  =
+  \begin{pmatrix} 10{,}464 \\ 18{,}124
+  \end{pmatrix} \text{kN}
+\end{align*}
+
+Wegen eine Belastung im Punkt D werden die Schnittgrößenfunktionen aus 2 Teile bestehen:
+\begin{enumerate}
+  \item $0 < x < a$
+  \item $a < x < a + b$
+\end{enumerate}
+\subsection{Teil 1. (0 < x < a)}
+\begin{align*}
+  N(x) &= S_{5X} + S_{3X} = -10,464 \, \text{[kN]} \\
+  V(x) &= S_{5Y} + S_{3Y} - p \cdot x = -13,876 - 0,5x \, \text{[kN]} \\
+  M_b(x) &= (S_{5Y} + S_{3Y}) \cdot x + p \cdot \frac{x^2}{2} = 13{,}876x + 0{,}25x^2 \, \text{[kNm]}
+\end{align*}
+\subsection{Teil 2. (a < x < a + b)}
+\begin{align*}
+  N(x) &= 0 \, \text{[kN]} \\
+  V(x) &= G + p \cdot (a + b - x) = 4,25 - 0,5x \, \text{[kN]}\\
+  M_b(x) &= G \cdot (a + b - x) + p \cdot \frac{(a + b - x)^2}{2} = \frac{x^2}{4} - 4,25x + 9,0625 \, \text{[kNm]}
+\end{align*}
+
+\subsection{Schnittgrößendiagramme}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[thick]
+    \def\mscale{3};
+    \def\a{0.5 * \mscale};
+    \def\b{2.0 * \mscale};
+    \def\c{2.0 * \mscale};
+    \def\h{0.433 * \mscale};
+
+    \def\kNscale{0.5};
+    \def\G{3 * \kNscale};
+
+    \def\kNmscale{1.25};
+    \def\p{0.5 * \kNmscale};
+
+    \draw[vec={red}] (E) -- ++(0, -1) node[left] {$G$};
+
+    \fill[pattern=vertical lines, pattern color=red] (C) rectangle ($(E) + (0, \p)$);
+    \draw[red] (C) rectangle ($(E) + (0, \p)$);
+    \draw[force={red}] ($(E) + (0, \p)$) -- (E) node[midway, right] {$p$};
+
+    \draw (D) -- (C);
+    \draw (D) -- (E);
+
+    \draw[force] (C) -- ($ (C)!1cm!(A) $) node[below] {$S_5$};
+
+    \draw[force] (C) -- ($ (C)!1cm!(B) $) node[left] {$S_3$};
+    \draw[force] (D) -- ($ (D)!1cm!(B) $) node[right] {$S_2$};
+
+    \foreach \X in {0, \a, \a+\b} {
+      \draw[dashed, gray] (\X, 0) -- (\X, -18);
+    }
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % N(x)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{scope}[yshift=-3cm]
+      \draw[->] (0,0) -- (\a + \b + 0.5, 0) node[below] {$x$};
+      \draw[->] (0,-3) -- (0, 1) node[left] {$N(x)$} node[right] {$[kN]$};
+
+      \def\yscale{0.25}
+      % Step shape for N
+      \draw[red, line width=1.5pt]
+      (0, -10.464 * \yscale) --
+      (\a, -10.464 * \yscale) --
+      (\a, 0) -- (\a + \b, 0);
+
+      % % Shaded area
+      \fill[pattern=vertical lines, pattern color=red]
+      (0,0) -- plot[domain=0:\a] (\x, { -10.464 * \yscale })
+      -- (\a,0);
+
+      % Labels
+      \node[right, red] at (\a, -10.464 * \yscale ) {$-10.464$};
+      \node[below left, red] at (\a+ \b, 0) {$0$};
+    \end{scope}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % V(x)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{scope}[yshift=-9cm]
+      \draw[->] (0,0) -- (\a + \b + 0.5, 0) node[below] {$x$};
+      \draw[->] (0,-3) -- (0, 1) node[left] {$V(x)$} node[right] {$[kN]$};
+
+      \def\yscale{0.2}
+
+      \draw[red, line width=1.5pt]
+      (0,-13.876 * \yscale) -- plot[domain=0:\a] (\x, { (-13.876 - 0.5 * \x) * \yscale })
+      -- (\a, -14.376 * \yscale);
+      \fill[pattern=vertical lines, pattern color=red]
+      (0,0) -- plot[domain=0:\a] (\x, { (-13.876 - 0.5 * \x) * \yscale })
+      -- (\a,0);
+
+      \draw[red, line width=1.5pt]
+      (\a,-14.376 * \yscale) -- plot[domain=\a:\a+\b] (\x, { (4.25 - 0.5 * \x / \mscale) * \yscale })
+      -- (\a+\b, 0 * \yscale);
+      \fill[pattern=vertical lines, pattern color=red]
+      (\a,0 * \yscale) -- plot[domain=\a:\a+\b] (\x, { (4.25 - 0.5 * \x / \mscale) * \yscale })
+      -- (\a+\b, 0 * \yscale);
+
+      % Labels
+      \node[right, red] at (\a, -14.376 * \yscale ) {$-14.376$};
+      \node[left, red] at (0, -13.876 * \yscale) {$-13.876$};
+      \node[left, red] at (\a, 4 * \yscale) {$4$};
+      \node[right, red] at (\a + \b, 3 * \yscale) {$3$};
+    \end{scope}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % M_b(x)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{scope}[yshift=-17cm]
+      \draw[->] (0,0) -- (\a + \b + 0.5, 0) node[below] {$x$};
+      \draw[->] (0,-1) -- (0, 3) node[left] {$M_b(x)$} node[right] {$[kNm]$};
+
+      \def\yscale{0.2}
+
+      \draw[red, line width=1.5pt]
+      (0,0 * \yscale) -- plot[domain=0:\a] (\x, { (13.876 * \x / \mscale - 0.25 * (\x / \mscale)^2) * \yscale })
+      -- (\a, 7 * \yscale);
+      \fill[pattern=vertical lines, pattern color=red]
+      (0,0) -- plot[domain=0:\a] (\x, { (13.876 * \x / \mscale - 0.25 * (\x / \mscale)^2) * \yscale })
+      -- (\a,0);
+
+      \draw[red, line width=1.5pt]
+      (\a,7 * \yscale) -- plot[domain=\a:\a+\b] (\x, { ((\x / \mscale)^2/4 - 4.25 * \x / \mscale + 9.0625) * \yscale })
+      -- (\a+\b, 0 * \yscale);
+      \fill[pattern=vertical lines, pattern color=red]
+      (\a,0 * \yscale) -- plot[domain=\a:\a+\b] (\x, { ((\x / \mscale)^2/4 - 4.25 * \x / \mscale + 9.0625) * \yscale })
+      -- (\a+\b, 0 * \yscale);
+
+      % Labels
+      \node[left, red] at (\a, 7 * \yscale ) {$7$};
+    \end{scope}
+  \end{tikzpicture}
+\end{figure}

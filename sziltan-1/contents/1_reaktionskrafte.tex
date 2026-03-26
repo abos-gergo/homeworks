@@ -1,0 +1,103 @@
+\section{Reaktionskrafte}
+Erst ist die maßstäbliche Abbildung des Konstruktions zu sehen:
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[thick]
+    \def\mscale{3};
+    \def\a{0.5 * \mscale};
+    \def\b{2.0 * \mscale};
+    \def\c{2.0 * \mscale};
+    \def\h{0.433 * \mscale};
+
+    \def\kNscale{0.5};
+    \def\G{3 * \kNscale};
+
+    \def\kNmscale{1.25};
+    \def\p{0.5 * \kNmscale};
+
+    \coordinate (A) at (-\c, -\h);
+    \coordinate (B) at (\a / 2, -\h);
+    \coordinate (C) at (0, 0);
+    \coordinate (D) at (\a, 0);
+    \coordinate (E) at (\a + \b, 0);
+
+    \draw[vec={red}] (E) -- ++(0, -\G) node[left] {$G$};
+
+    \fill[pattern=vertical lines, pattern color=red] (C) rectangle ($(E) + (0, \p)$);
+    \draw[red] (C) rectangle ($(E) + (0, \p)$);
+    \draw[force={red}] ($(E) + (0, \p)$) -- (E) node[midway, right] {$p$};
+
+    \draw (A) -- (C);
+    \draw (D) -- (C);
+    \draw (B) -- (C);
+    \draw (D) -- (B);
+    \draw (D) -- (E);
+    \draw [dashed, thin, color=gray] (A) -- (B);
+    \supporthinge{A}{0}
+    \supporthinge{B}{0}
+    \hinge{C}
+    \draw (D) ++(0.175, 0) arc (0:180:0.175);
+    \hinge{D}
+  \end{tikzpicture}
+  \caption{Maßstäblich korrekte Abbildung des Konstruktions}
+\end{figure}
+Um die Reaktionen im Punkt A und B zu bestimmen, kann die Konstruktion als ein Starrkörper angenommen werden:
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[thick]
+    \def\mscale{3};
+    \def\a{0.5 * \mscale};
+    \def\b{2.0 * \mscale};
+    \def\c{2.0 * \mscale};
+    \def\h{0.433 * \mscale};
+
+    \def\kNscale{0.5};
+    \def\G{3 * \kNscale};
+
+    \def\kNmscale{1.25};
+    \def\p{0.5 * \kNmscale};
+
+    \draw[force={red}] (E) -- ++(0, -\G) node[left] {$G$};
+
+    \fill[pattern=vertical lines, pattern color=red] (C) rectangle ($(E) + (0, \p)$);
+    \draw[red] (C) rectangle ($(E) + (0, \p)$);
+    \draw[force={red}] ($(E) + (0, \p)$) -- (E) node[midway, right] {$p$};
+
+    \draw (A) -- (C);
+    \draw (D) -- (C);
+    \draw (B) -- (C);
+    \draw (D) -- (B);
+    \draw (D) -- (E);
+
+    \draw[force={red}, <-] (A) -- ++(-1, 0) node[midway, above] {$A_X$};
+    \draw[force={red}, <-] (A) -- ++(0, -1) node[left] {$A_Y$};
+    \draw[force={red}, <-] (B) -- ++(-1, 0) node[midway, above] {$B_X$};
+    \draw[force={red}, <-] (B) -- ++(0, -1) node[left] {$B_Y$};
+
+  \end{tikzpicture}
+  \caption{Abbildung der Reaktionskräfte}
+\end{figure}
+
+Man bekommt 3 Gleichgewichtsgleichungen, und 1 Gleichung weil Stab 5 nur Kräfte nur im Stabrichtung auswirken kann.
+
+\begin{align}
+  &\sum F_X = A_X + B_X = 0 \\
+  &\sum F_Y = A_Y + B_Y - G - p \cdot (a + b) = 0 \\
+  &\sum M_A = B_Y \cdot (c + \frac{a}{2}) - G \cdot (a + b + c) - p \cdot (a + b) \cdot (c + \frac{a + b}{2}) = 0\\
+  &\frac{A_X}{A_Y} = \frac{c}{\frac{a}{2} \cdot tg(60^\circ)}
+\end{align}
+
+Daraus bekommt man die folgende Werte für die Reaktionskräfte:
+\begin{align*}
+  \boxed{
+    \begin{aligned}
+      A_X &= -16{,}422 \, \text{kN} \\
+      A_Y &= -3{,}556 \, \text{kN}
+  \end{aligned}}
+  &\qquad
+  \boxed{
+    \begin{aligned}
+      B_X &= 16{,}422 \, \text{kN} \\
+      B_Y &= 7{,}806 \, \text{kN}
+  \end{aligned}}
+\end{align*}

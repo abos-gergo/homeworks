@@ -1,0 +1,67 @@
+\section{Belastung der einzelnen Stäbe}
+\subsection{Stab 5}
+Da Stab 5 belastungen nur an seiner Endpunkte hat, sind die 2 Kräfte in diesen Punkte im Stabrichtung gerichet, und sind entgegengesetzt gleich groß.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[thick]
+    \draw (C) -- (A);
+    \draw[force] (C) -- ($ (C)!-1cm!(A) $) node[above] {$S_5$};
+    \draw[force] (A) -- ($ (A)!-1cm!(C) $) node[above] {$S_5$};
+    \draw[force, color=gray!50] (A) -- ++(1, 0) node[right] {$A_X$};
+    \draw[force, color=gray!50] (A) -- ++(0, 1) node[right] {$A_Y$};
+  \end{tikzpicture}
+  \caption{Belastung von Stab 5}
+\end{figure}
+\begin{align*}
+  |S_5| = |\mathbf{A}| = \sqrt{A_X^2 + A_Y^2} = 16,802 \, \text{kN}
+\end{align*}
+Da $A_X$ und $A_Y$ auch negativ sind:
+\begin{align*}
+  \boxed{
+    S_5 = 16,802 \, \text{kN}
+  }
+\end{align*}
+
+\subsection{Stab 4}
+Nach dem selben Logik als Stab 5:
+\begin{align*}
+  &S_4 = G \\
+  &\boxed{
+    S_4 = 3 \, \text{kN}
+  }
+\end{align*}
+
+\subsection{Stab 2 und 3}
+Im Gelenk B sind 3 Kräfte zu finden. Die Summe der 3 Kräften muss 0 sein, für die Konstruktion im Gleichgewicht zu sein.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[thick]
+    \draw[force, color=gray!50] (B) -- ++(1, 0) node[right] {$B_X$};
+    \draw[force, color=gray!50] (B) -- ++(0, 1) node[above] {$B_Y$};
+    \draw[dashed, color=gray!50] ($(B) + (1, 0)$) -- ++(0, 1);
+    \draw[dashed, color=gray!50] ($(B) + (0, 1)$) -- ++(1, 0);
+    \draw[force] (B) -- ++(1, 1) node[above right] {$\mathbf{B}$};
+
+    \draw[force] (B) -- ++(-60:1.4) node[right] {$\mathbf{S_3}$};
+    \draw[force] (B) -- ++(-120:1.4) node[left] {$\mathbf{S_2}$};
+    \hinge {B};
+  \end{tikzpicture}
+  \caption{Belastung von Gelenk B}
+\end{figure}
+
+\setcounter{equation}{0}
+\begin{align}
+  \sum F_X = B_X + S_3 \cdot cos(-60^\circ) + S_2 \cdot cos(-120^\circ) = 0\\
+  \sum F_Y = B_Y + S_3 \cdot sin(-60^\circ) + S_2 \cdot sin(-120^\circ) = 0
+\end{align}
+\begin{align*}
+  \boxed{
+    \begin{aligned}
+      S_2 &= -20{,}928 \, \text{kN}
+  \end{aligned}}
+  &\qquad
+  \boxed{
+    \begin{aligned}
+      S_3 &= 11{,}916 \, \text{kN}
+  \end{aligned}}
+\end{align*}

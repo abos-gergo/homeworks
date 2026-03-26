@@ -1,0 +1,18 @@
+\section{Dimensionierung für reine Biegung}
+Von den Schnittgrößen kann abgelesen werden:
+\begin{align*}
+  &M_{b,max}^{(1)} = 7kNm
+\end{align*}
+Nach dem Navier Formel:
+\begin{align*}
+  \sigma_{x,max}^{(1)} &= \frac{M_{b,max}^{(1)}}{I_z} \cdot e = \frac{M_{b,max}^{(1)}}{W_{z,min}} \\
+  \sigma_{x,max}^{(1)} &= \sigma_{zul} = \frac{\sigma_F}{n} = \frac{355}{2} = 177,5 \, \text{MPa} \\
+  \sigma_{zul} &= \frac{{M_{b,max}^{(1)}}}{W_{z,min}} \\
+  &\boxed{
+    W_{z,min} = 39,437 \, \text{cm}^3
+  }
+\end{align*}
+
+\section{U-Profil auswählen}
+Aus \href{https://www.mm.bme.hu/edu/bsc/de/tm2/DIN-1026-1-U-Profile.pdf}{der Tabelle} kann eine U-Profil mit dem kleinsten $W_y$ auswählen, wo $W_y > W_{min}$.
+Die Profil mit Profilnummer \textbf{U240} habe ich gewählt, mit einer Widerstandsmoment $W_y = 39,6 \text{cm}^3$
