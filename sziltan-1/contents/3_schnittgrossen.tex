@@ -112,7 +112,7 @@ Wegen eine Belastung im Punkt D werden die Schnittgrößenfunktionen aus 2 Teile
     \draw[force] (D) -- ($ (D)!1cm!(B) $) node[right] {$S_2$};
 
     \foreach \X in {0, \a, \a+\b} {
-      \draw[dashed, gray] (\X, 0) -- (\X, -18);
+      \draw[dashed, gray] (\X, 0) -- (\X, -19);
     }
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,26 +172,34 @@ Wegen eine Belastung im Punkt D werden die Schnittgrößenfunktionen aus 2 Teile
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % M_b(x)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{scope}[yshift=-17cm]
+    \begin{scope}[yshift=-19cm]
       \draw[->] (0,0) -- (\a + \b + 0.5, 0) node[below] {$x$};
-      \draw[->] (0,-1) -- (0, 3) node[left] {$M_b(x)$} node[right] {$[kNm]$};
+      \draw[->] (0,-1) -- (0, 5) node[left] {$M_b(x)$} node[right] {$[kNm]$};
 
-      \def\yscale{0.2}
+      \def\yscale{0.6}
 
       \draw[red, line width=1.5pt]
-      (0,0 * \yscale) -- plot[domain=0:\a] (\x, { (13.876 * \x / \mscale - 0.25 * (\x / \mscale)^2) * \yscale })
-      -- (\a, 7 * \yscale);
+      plot[domain=0:\a] (\x, { (13.876 * \x / \mscale - 0.25 * (\x / \mscale)^2) * \yscale });
       \fill[pattern=vertical lines, pattern color=red]
       (0,0) -- plot[domain=0:\a] (\x, { (13.876 * \x / \mscale - 0.25 * (\x / \mscale)^2) * \yscale })
       -- (\a,0);
 
       \draw[red, line width=1.5pt]
-      (\a,7 * \yscale) -- plot[domain=\a:\a+\b] (\x, { ((\x / \mscale)^2/4 - 4.25 * \x / \mscale + 9.0625) * \yscale })
-      -- (\a+\b, 0 * \yscale);
+      plot[domain=\a:\a+\b] (\x, { ((\x / \mscale)^2/4 - 4.25 * \x / \mscale + 9.0625) * \yscale });
       \fill[pattern=vertical lines, pattern color=red]
       (\a,0 * \yscale) -- plot[domain=\a:\a+\b] (\x, { ((\x / \mscale)^2/4 - 4.25 * \x / \mscale + 9.0625) * \yscale })
       -- (\a+\b, 0 * \yscale);
 
+      % Tangenten
+      \draw[blue, dashed]
+      (0,0 * \yscale) -- (\a/2, 3.43775 * \yscale) -- (\a, 7 * \yscale);
+      \draw[blue, dashed]
+      (\a,7 * \yscale) -- (\a+\b/2, 3*\yscale)
+      -- (\a+\b, 0 * \yscale);
+      \fill[blue] (\a/2, 3.43775 * \yscale) circle (0.05cm);
+      \fill[blue] (\a+\b/2, 3 * \yscale) circle (0.05cm);
+      \draw[black, dashed] (\a/2, 3.43775 * \yscale) -- (0, 3.43775 * \yscale) node[left]{$3,43775$};
+      \draw[black, dashed] (\a+\b/2, 3 * \yscale) -- ++(1, 0) node[right]{$3$};
       % Labels
       \node[left, red] at (\a, 7 * \yscale ) {$7$};
     \end{scope}

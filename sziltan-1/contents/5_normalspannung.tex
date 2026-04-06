@@ -1,0 +1,31 @@
+\section{Berücksichtigung der Normalkraft und der Bohrung}
+\subsection{Fläche und FTM des Profils}
+Die Bohrung wird Material in dem gefährlichem Querschnitt abtrennen. Die Bohrung ist symmetrisch um die y-Achse, und geht durch eine Trapezförmige Querschnitt des Profils.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[blue] (2.5, 2) -- (2.5, 4);
+    \fill[pattern=horizontal lines, pattern color=blue] (2.5, 2) -- (3, 4) -- (2.5, 4);
+
+    \draw[blue] (7.5, 2) -- (7, 0);
+    \fill[pattern=horizontal lines, pattern color=blue] (7.5, 2) -- (7, 0) -- (7.5, 0);
+
+    \draw[ultra thick] (0,0) -- (2,0) -- (3, 4) -- (0, 4) -- (0,0);
+    \draw[ultra thick] (5,0) -- (7.5,0) -- (7.5, 4) -- (5, 4) -- (5,0);
+  \end{tikzpicture}
+  \caption{Vereinfachung des Profils}
+  \label{fig:trapezinrechteck}
+\end{figure}
+Wenn die Biegung um die z-Achse passiert, kann das Querschnitt als im \figref{fig:trapezinrechteck} zu sehen ist vereinfacht werden. Dieser Vereinfachung ändert $I_z$ nicht.
+
+Die Berechung des Flächenträgheitmoments den gebohrten Querschnitte ist so einfach:
+\begin{align*}
+  &I_z = 2 \cdot \frac{d^3 \cdot t}{12} = 138666,663 \, mm^4
+\end{align*}
+
+Die neue Fläche und Schwerpunkt muss auch berechnet werden:
+\begin{align*}
+  &A = A_{U240} - A_{bohr} = 4230 - 2 \cdot 40 \cdot 13 = 3190 \, mm^2 \\
+  &s
+\end{align*}
