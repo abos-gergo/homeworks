@@ -1,0 +1,35 @@
+\subsection{Neue Profil}
+Da die U240 Profil nicht genug groß war, wird eine größere Profil ausgewählt, sei es die Profil \textbf{U280}.
+De selben Berechnungen muss man machen als vorher, nur die Zahlenwerte des Profils sind anders.
+\begin{align*}
+  &A = A_{U280} - A_{bohr} = 5330 - 2 \cdot 40 \cdot 15 = 4130 mm^2 \\
+  &I_{bohr} = 2 \cdot \frac{d^3 \cdot t}{12} = 160000 mm^4 \\
+  &s_z = \frac{A_{U280} \cdot e_y - A_{bohr} \cdot \frac{b}{2}}{A} = \frac{5330 \cdot 25,3 - 1200 \cdot 47,5}{4130} = 18,85mm \\
+  &I_{S,bohr} = I_{bohr} + A_{bohr} \cdot (\frac{b}{2} - s_z)^2 = 1144987 mm^4 \\
+  &I_{S,U280} = I_{U280} + A_{U280} \cdot (e_y - s_z)^2 = 4211741,325 mm^4 \\
+  &I_z = I_{S,U280} - I_{S,bohr} = 3066754,325 mm^4 \\
+  &\sigma_{x,N} = \frac{N}{A} = \frac{10464 \text{N}}{4130 \text{mm}^2} = 2,5337 \, \text{MPa} \\
+  &\sigma_{x,b}(z) = \frac{M_{b}^{(1)}(a)}{I_{z}} \cdot z = \frac{7 \cdot 10^6 \, \text{Nmm}}{3066754,325 \, \text{mm}^4} \cdot z = 2,2825 \cdot z \, \text{[MPa]} \\
+  &\sigma_x(z) = 2,2825z + 2,5337 \, \text{[MPa]} \\
+  &e = s_z - b = -76,15 mm \\
+  &\sigma_x(-76,15) = -171,279 \text{MPa}
+\end{align*}
+
+Dieser Wert ist schon kleiner als die zulassige Spannung, also das Profil ist geeignet.
+
+Zum Überprüfung wurde die \textbf{U260} Profil auch berechnet:
+\begin{align*}
+  &A = A_{U260} - A_{bohr} = 4830 - 2 \cdot 40 \cdot 14 = 3710 mm^2 \\
+  &I_{bohr} = 2 \cdot \frac{d^3 \cdot t}{12} = 149333,33 mm^4 \\
+  &s_z = \frac{A_{U260} \cdot e_y - A_{bohr} \cdot \frac{b}{2}}{A} = \frac{4830 \cdot 23,6 - 1120 \cdot 45}{3710} = 17,14mm \\
+  &I_{S,bohr} = I_{bohr} + A_{bohr} \cdot (\frac{b}{2} - s_z)^2 = 1018654,482 mm^4 \\
+  &I_{S,U260} = I_{U260} + A_{U260} \cdot (e_y - s_z)^2 = 3371563,628 mm^4 \\
+  &I_z = I_{S,U260} - I_{S,bohr} = 2352909,146 mm^4 \\
+  &\sigma_{x,N} = \frac{N}{A} = \frac{10464 \text{N}}{3710 \text{mm}^2} = 2,82 \, \text{MPa} \\
+  &\sigma_{x,b}(z) = \frac{M_{b}^{(1)}(a)}{I_{z}} \cdot z = \frac{7 \cdot 10^6 \, \text{Nmm}}{2352909,146 \, \text{mm}^4} \cdot z = 2,975 \cdot z \, \text{[MPa]} \\
+  &\sigma_x(z) = 2,975z + 2,82 \, \text{[MPa]} \\
+  &e = s_z - b = -72,86 mm \\
+  &\sigma_x(-72,86) = -213,9385 \text{MPa}
+\end{align*}
+
+Das U260 Profil hat eine größere Maximalspannung als die zulassige Spannung, also die U280 Profil ist die kleinste geeignete Profil.

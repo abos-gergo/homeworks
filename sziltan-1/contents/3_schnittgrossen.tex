@@ -70,7 +70,7 @@ Wegen eine Belastung im Punkt D werden die Schnittgrößenfunktionen aus 2 Teile
 \end{enumerate}
 \subsection{Teil 1. (0 < x < a)}
 \begin{align*}
-  N(x) &= S_{5X} + S_{3X} = -10,464 \, \text{[kN]} \\
+  N(x) &= -S_{5X} + -S_{3X} = 10,464 \, \text{[kN]} \\
   V(x) &= S_{5Y} + S_{3Y} - p \cdot x = -13,876 - 0,5x \, \text{[kN]} \\
   M_b(x) &= (S_{5Y} + S_{3Y}) \cdot x + p \cdot \frac{x^2}{2} = 13{,}876x + 0{,}25x^2 \, \text{[kNm]}
 \end{align*}
@@ -118,24 +118,24 @@ Wegen eine Belastung im Punkt D werden die Schnittgrößenfunktionen aus 2 Teile
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % N(x)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{scope}[yshift=-3cm]
+    \begin{scope}[yshift=-5cm]
       \draw[->] (0,0) -- (\a + \b + 0.5, 0) node[below] {$x$};
-      \draw[->] (0,-3) -- (0, 1) node[left] {$N(x)$} node[right] {$[kN]$};
+      \draw[->] (0,-1) -- (0, 3) node[left] {$N(x)$} node[right] {$[kN]$};
 
       \def\yscale{0.25}
       % Step shape for N
       \draw[red, line width=1.5pt]
-      (0, -10.464 * \yscale) --
-      (\a, -10.464 * \yscale) --
+      (0, 10.464 * \yscale) --
+      (\a, 10.464 * \yscale) --
       (\a, 0) -- (\a + \b, 0);
 
       % % Shaded area
       \fill[pattern=vertical lines, pattern color=red]
-      (0,0) -- plot[domain=0:\a] (\x, { -10.464 * \yscale })
+      (0,0) -- plot[domain=0:\a] (\x, { 10.464 * \yscale })
       -- (\a,0);
 
       % Labels
-      \node[right, red] at (\a, -10.464 * \yscale ) {$-10.464$};
+      \node[right, red] at (\a, 10.464 * \yscale ) {$10.464$};
       \node[below left, red] at (\a+ \b, 0) {$0$};
     \end{scope}
 
@@ -149,21 +149,21 @@ Wegen eine Belastung im Punkt D werden die Schnittgrößenfunktionen aus 2 Teile
       \def\yscale{0.2}
 
       \draw[red, line width=1.5pt]
-      (0,-13.876 * \yscale) -- plot[domain=0:\a] (\x, { (-13.876 - 0.5 * \x) * \yscale })
-      -- (\a, -14.376 * \yscale);
+      (0,-13.876 * \yscale) -- plot[domain=0:\a] (\x, { (-13.876 - 0.5 * \x / \mscale) * \yscale })
+      -- (\a, -14.126 * \yscale);
       \fill[pattern=vertical lines, pattern color=red]
-      (0,0) -- plot[domain=0:\a] (\x, { (-13.876 - 0.5 * \x) * \yscale })
+      (0,0) -- plot[domain=0:\a] (\x, { (-13.876 - 0.5 * \x / \mscale) * \yscale })
       -- (\a,0);
 
       \draw[red, line width=1.5pt]
-      (\a,-14.376 * \yscale) -- plot[domain=\a:\a+\b] (\x, { (4.25 - 0.5 * \x / \mscale) * \yscale })
+      (\a,-14.126 * \yscale) -- plot[domain=\a:\a+\b] (\x, { (4.25 - 0.5 * \x / \mscale) * \yscale })
       -- (\a+\b, 0 * \yscale);
       \fill[pattern=vertical lines, pattern color=red]
       (\a,0 * \yscale) -- plot[domain=\a:\a+\b] (\x, { (4.25 - 0.5 * \x / \mscale) * \yscale })
       -- (\a+\b, 0 * \yscale);
 
       % Labels
-      \node[right, red] at (\a, -14.376 * \yscale ) {$-14.376$};
+      \node[right, red] at (\a, -14.126 * \yscale ) {$-14.126$};
       \node[left, red] at (0, -13.876 * \yscale) {$-13.876$};
       \node[left, red] at (\a, 4 * \yscale) {$4$};
       \node[right, red] at (\a + \b, 3 * \yscale) {$3$};

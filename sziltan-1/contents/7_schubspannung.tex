@@ -1,0 +1,26 @@
+\section{Schubspannungsverteilung}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \def\mmscale{0.05}
+    \def\s{9.5 * \mmscale}
+    \def\h{240 * \mmscale}
+    \def\b{85 * \mmscale}
+    \def\t{13 * \mmscale}
+
+    \dimarrow{0,0}{0, -\b}{(-0.2,0)}{(-0.2,0)}{$b$}{left};
+    \dimarrow{0,0}{\h, 0}{(0,0.2)}{(0,0.2)}{$h$}{above};
+    \dimarrow{\h,0}{\h, -\s}{(0.2,0)}{(0.2,0)}{$s$}{right};
+    \dimarrow{0,-\b}{\t, -\b}{(0,0.2)}{(0,0.2)}{$t$}{above};
+
+    \draw[thick] (0,0) -- (\h, 0) -- (\h, -\s) -- (0, -\s) -- (0,0);
+    \draw[thick] (0, -\s) -- (0, -\b) -- (\t, -\b) -- (\t, -\s);
+    \draw[thick] (\h-\t, -\s) -- (\h-\t, -\b) -- (\h, -\b) -- (\h, -\s);
+
+    \draw (\h / 2, -\s / 2) node[] {$A_1$};
+    \draw (\t / 2, -\b / 2 - \s / 2) node[] {$A_2$};
+    \draw (\h - \t / 2, -\b / 2 - \s / 2) node[] {$A_2$};
+  \end{tikzpicture}
+  \caption{Vereinfachter U240 Profil}
+\end{figure}
+Die Fläche und der Schwerpunkt muss berechnet werden.

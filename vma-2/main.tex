@@ -1,0 +1,94 @@
+% Dokumentum konfiguráció
+\documentclass[fleqn,12pt]{article}
+% --------------------------------------------------
+% Dokumentum adatok
+% --------------------------------------------------
+
+% Intézmény és kar
+\newcommand\INTEZMENY{Budapesti Műszaki és Gazdaságtudományi Egyetem}
+\newcommand\KAR{Gépészmérnöki Kar}
+\newcommand\LOGO{bme-logo.jpg} % logo fájl neve a figures mappában
+
+% Dokumentum adatok
+\newcommand\CIM{Grundlagen der Elektronik Hausaufgabe}
+\newcommand\DATUM{2025/26/2}
+\newcommand\NEV{Abos Gergő}
+\newcommand\NEPTUN{C46M9M}
+\newcommand\EMAIL{gergo.abos@gmail.com}
+\newcommand\TANTARGY{Grundlagen der Elektronik}
+\newcommand\TANTARGYKOD{BMEVIAUBSXA060-00}
+
+\usepackage{tabularx}
+% --------------------------------------------------
+% Preambulum és egyéni parancsok betöltése
+% --------------------------------------------------
+
+\input{../_settings/00_preambulum.tex}
+\input{../_settings/01_commands.tex}
+\input{../_settings/02_mechTikz.tex}
+
+% ==================================================
+% Dokumentum kezdete
+% ==================================================
+\begin{document}
+\textbf{sid1.}
+\begin{align*}
+&\text{A) 10V Gleichstrom} \\
+&\text{B) 100V absolute Mittelwert Sinus} \\
+&\text{C) 100V abs. Mittelwert, -U:50\%..+U:50\% Viereckspannung} \\
+&\text{D) Dreieck Spannung, 25\% steigend, 75\% fallend, -100...100V}
+\end{align*}
+\begin{table}[htpb]
+\centering
+\renewcommand{\arraystretch}{1.3} % Etwas mehr Zeilenabstand für bessere Lesbarkeit
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|}
+\hline
+\textbf{Messwerk} & \textbf{Fall A} & \textbf{Fall B} & \textbf{Fall C} & \textbf{Fall D} \\ \hline
+Durchschnittswert & 10V & 0V & & \\ \hline
+Abs. Mittelwert & 10V & 100V & & \\ \hline
+Effektivwert & 10V & 111,07V & & \\ \hline
+Formfaktor & 1 & 1,1107 & & \\ \hline
+Crestfaktor & 1 & 1,414 & & \\ \hline
+Drehspul & 10V & 0V & & \\ \hline
+Drehspul mit Gleichrichter & 11,1V & 111,07V & & \\ \hline
+Dreheisen, Elektrodynamisch, Thermoumformer, Elektrostatisch & 10V & 111,07V & & \\ \hline
+Digitale (einfache Typ mit einer Diode) in Gleichstrom Bereich & 10V & 50V & & \\ \hline
+Digitale (einfache Typ mit einer Diode) in Wechselstrom Bereich & 0V & 111,07V & & \\ \hline
+Digitale (einfache Typ mit einer Diode) in Wechselstrom Bereich, Anschlussleitungen vertauscht & 0V & 111,07V & & \\ \hline
+Digitale (mit 2 Dioden, es erstellt den abs. Mittelwert) in Gleichstrom Bereich & 10V & 100V & & \\ \hline
+Digitale (mit 2 Dioden, es erstellt den abs. Mittelwert) in Wechselstrom Bereich & 0V & 111,07V & & \\ \hline
+Digitale (echt Effektivwert messende Typ) in Gleichstrom Bereich & 10V & 111,07V & & \\ \hline
+Digitale (echt Effektivwert messende Typ) in Wechselstrom Bereich & 0V & 111,07V & & \\ \hline
+\end{tabularx}
+\end{table}
+\pagebreak
+
+\section{Fall A}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth]
+\draw[->] (0,0) -- (10,0) node[above right]{$t$};
+\draw[->] (0,0) -- (0,2) node[right]{$u(t)$};
+\draw[thick, red] (0, 1.5) -- (9, 1.5) node[right]{$10V$};
+\end{tikzpicture}
+\end{figure}
+
+Durchschnittswert, abs. Mittelwert, Effektivwert sind \textbf{10V}, da die Spannung konstant ist.
+
+Formfaktor:
+\begin{align*}
+F = \frac{U_{eff}}{U_{abs}} = \frac{10}{10} = \mathbf{1}
+\end{align*}
+
+Crestfaktor:
+\begin{align*}
+C = \frac{U_{spitze}}{U_{eff}} = \frac{10}{10} = \mathbf{1}
+\end{align*}
+
+Drehspuhl zeigt \textbf{Durchschnittswert}, also es zeigt \textbf{10V}.
+
+Drehspuhl mit Gleichrichter ist skaliert für ein Wechselstrom, also die Werte sind mit der Formfaktor einer Sinuswelle multipliziert. Es zeigt:
+\begin{align*}
+U \cdot F_{sin} = 10 \cdot 1,11 = \mathbf{11,1V}
+\end{align*}
+\end{document}

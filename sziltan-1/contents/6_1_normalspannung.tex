@@ -1,0 +1,83 @@
+\section{Berücksichtigung der Normalkraft und der Bohrung}
+\subsection{Fläche und FTM des Profils}
+Die Bohrung wird Material in dem gefährlichem Querschnitt abtrennen. Die Bohrung ist symmetrisch um die y-Achse, und geht durch eine Trapezförmige Querschnitt des Profils.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[blue] (2.5, 2) -- (2.5, 4);
+    \fill[pattern=horizontal lines, pattern color=blue] (2.5, 2) -- (3, 4) -- (2.5, 4);
+
+    \draw[blue] (7.5, 2) -- (7, 0);
+    \fill[pattern=horizontal lines, pattern color=blue] (7.5, 2) -- (7, 0) -- (7.5, 0);
+
+    \draw[ultra thick] (0,0) -- (2,0) -- (3, 4) -- (0, 4) -- (0,0);
+    \draw[ultra thick] (5,0) -- (7.5,0) -- (7.5, 4) -- (5, 4) -- (5,0);
+  \end{tikzpicture}
+  \caption{Vereinfachung des Profils}
+  \label{fig:trapezinrechteck}
+\end{figure}
+Wenn die Biegung um die z-Achse passiert, kann das Querschnitt als im \figref{fig:trapezinrechteck} zu sehen ist vereinfacht werden. Dieser Vereinfachung ändert $I_z$ nicht.
+
+Das Flächenträgheitmoment den gebohrten Querschnitte nach dem Formel:
+\begin{align*}
+  &I_{bohr} = 2 \cdot \frac{d^3 \cdot t}{12} = 138666,663 \, mm^4
+\end{align*}
+
+Die neue Fläche muss auch berechnet werden:
+\begin{align*}
+  &A = A_{U240} - A_{bohr} = 4230 - 2 \cdot 40 \cdot 13 = 3190 \, mm^2 \\
+\end{align*}
+
+Der neue Schwerpunkt kann von dem altem Schwerpunkt und der Schwerpunkt der Bohrung berechnet werden.
+\begin{align*}
+  s_z &= \frac{A_{U240} \cdot e_y - A_{bohr} \cdot \frac{b}{2}}{A} \\
+  &= \frac{4230 \cdot 22{,}3 - 1040 \cdot 42{,}5}{3190} \\
+  &= 15{,}71 \, \text{mm}
+\end{align*}
+
+Die Flächenträgheitmomente kann in diesem Schwerpunkt verschoben werden mit hilfe der Steiner-Satz.
+\begin{align*}
+  I_{S,bohr} &= I_{bohr} + A_{bohr} \cdot (\frac{b}{2} - s_z)^2 \\
+  &= 885078{,}93 \, \text{mm}^4\\
+  \\
+  I_{S,U240} &= I_{U240} + A_{U240} \cdot (e_y - s_z)^2 \\
+  &= 2480000 + 4230 \cdot (22{,}3 - 15{,}71)^2 \\
+  &= 2663700{,}86 \, mm^4 \\
+\end{align*}
+
+Das Flächenträgheitmoment des neues Querschnitts kann jetzt berechnet werden.
+\begin{align*}
+  I_{z} &= I_{S,U240} - I_{S,bohr} \\
+  I_{z} &= 2663700{,}86 - 885078{,}93 \\
+  I_{z} &= 1778621{,}93 \, \text{mm}^4
+\end{align*}
+
+\subsection{Spannungen in dem Querschnitt}
+Die Normalspannung wegen die Normalkraft:
+\begin{align*}
+  \sigma_{x,N} = \frac{N}{A} = \frac{10464 \, N}{3190 \, mm^2} = 3,28 \, \text{MPa}
+\end{align*}
+
+Die Normalspannung wegen der Biegemoment:
+\begin{align*}
+  \sigma_{x,b}(z) &= \frac{M_{b}^{(1)}(a)}{I_{z}} \cdot z \\
+  &= \frac{7 \cdot 10^6 \, \text{Nmm}}{1778621{,}93 \, \text{mm}^4} \cdot z \\
+  &= 3{,}936 \cdot z \, \text{[MPa]}
+\end{align*}
+
+Nach dem Superpositionsprinzip können die Zwei Spannungswerte addiert, so bekommt man die Spannunsverteilung in diesem Querschnitt:
+\begin{align*}
+  \sigma_{x}(z) &= \sigma_{x,N} + \sigma_{x,b}(z) \\
+  &= 3{,}936z + 3,28 \, \text{[MPa]}
+\end{align*}
+
+\subsection{Dimensionierung}
+Mit dem neuen Schwerpunkt ($s_z = 15,71$mm) ist die neue Randfase $e = -69,29$mm
+
+Mit Substition bekommt die maximale Spannung in dem Querschnitt.
+\begin{align*}
+  \sigma_{x}(-69,29) &= -269,45 \, \text{MPa}
+\end{align*}
+
+Dieser Wert is deutlich größer, als die zulassige Spannung $\sigma_{zul} = 177,5$ MPa. Man muss also ein neues Profil ausgewählt werden.
