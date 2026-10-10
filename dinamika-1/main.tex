@@ -10,13 +10,13 @@
 \newcommand\LOGO{bme-logo.jpg} % logo fájl neve a figures mappában
 
 % Dokumentum adatok
-\newcommand\CIM{Festigkeitslehre Hausaufgabe}
-\newcommand\DATUM{2025/26/1}
+\newcommand\CIM{Dinamika 1. házi feladat}
+\newcommand\DATUM{2026/27 I.}
 \newcommand\NEV{Abos Gergő}
 \newcommand\NEPTUN{C46M9M}
 \newcommand\EMAIL{gergo.abos@gmail.com}
-\newcommand\TANTARGY{Festigkeitslehre}
-\newcommand\TANTARGYKOD{BMEGEMMBXN2}
+\newcommand\TANTARGY{Dinamika}
+\newcommand\TANTARGYKOD{BMEGEMMBXM3}
 
 % --------------------------------------------------
 % Preambulum és egyéni parancsok betöltése
@@ -33,5 +33,108 @@
 
 % Címlap és tartalomjegyzék
 % \input{contents/01_title.tex}
-\includepdf{contents/Taskpage.pdf} % feladatlap beszúrása, ha szükséges
+\includepdf[pages=1]{contents/Taskpage.pdf}
+
+\section{Méretarányos szerkezeti ábra}
+Ebben a részben ábrázoljuk a mechanizmust az adott konfigurációban.
+\begin{figure}[H]
+    \centering
+    \input{contents/fig_szerkezet.tex}
+    \caption{A mechanizmus méretarányos ábrája}
+\end{figure}
+
+\section{Sebességállapot vizsgálata (2. és 3. feladat)}
+\subsection{A (2) test szögsebessége és az $S_2$ súlypont sebessége (2. feladat)}
+Az 1-es rúd rögzített tengely körüli forgást végez, így a B pont sebessége csak érintő irányú komponensből áll:
+\begin{equation}
+    \vec{v}_B = \vec{\omega}_1 \times \vec{r}_{AB} = \begin{bmatrix} -0,2298 \\ 0,1928 \\ 0 \end{bmatrix} \text{ m/s}
+\end{equation}
+
+A (2) rúd sebességpólusának ($P_2$) meghatározása a sebességvektorokra állított merőlegesek metszéspontjával történik.
+A B pont sebessége merőleges az AB rúdra, ezért a sebességpólus rajta van az AB rúd tengelyén. 
+A 3-as kerék csúszásmentesen gördül a talajon, így a pillanatnyi forgáscentruma a talajjal való $K$ érintkezési pont. Ebből következik, hogy a C pont sebessége merőleges a KC szakaszra. A (2) rúd sebességpólusának tehát a KC egyenesen is rajta kell lennie.
+A két egyenes metszéspontja megadja $P_2$ helyét, melynek koordinátái: $P_2(0,1405; 0,1675)\text{ m}$.
+
+A (2) rúd szögsebességének nagysága a B pont sebességéből számítható:
+\begin{equation}
+    \omega_{2z} = \frac{(\vec{r}_{P_2 B} \times \vec{v}_B)_z}{|\vec{r}_{P_2 B}|^2} \implies \omega_{2z} = -1,8913 \text{ rad/s}, \quad \vec{\omega}_2 = \begin{bmatrix} 0 \\ 0 \\ -1,8913 \end{bmatrix} \text{ rad/s}
+\end{equation}
+
+Az $S_2$ pont sebessége a pólus körüli tiszta forgásként írható fel:
+\begin{equation}
+    \vec{v}_{S_2} = \vec{\omega}_2 \times \vec{r}_{P_2 S_2} = \begin{bmatrix} -0,1731 \\ 0,0628 \\ 0 \end{bmatrix} \text{ m/s}, \quad |\vec{v}_{S_2}| = 0,1841 \text{ m/s}
+\end{equation}
+
+\subsection{Sebességpólus és sebességvektorok (3. feladat)}
+\begin{figure}[H]
+    \centering
+    \input{contents/fig_sebesseg.tex}
+    \caption{Sebességvektorok és a sebességpólus ($P_2$) helyzete}
+\end{figure}
+
+\section{Gyorsulásállapot vizsgálata (4., 5., 6. feladat)}
+\subsection{A (2) test szöggyorsulása és az $S_2$ pont gyorsulása (4. feladat)}
+A gyorsulásállapot meghatározásához felírjuk a kinematikai kényszereket. Az 1-es rúd B pontjának gyorsulása (mivel $\vec{\omega}_1 = \text{állandó}$, így $\vec{\varepsilon}_1 = \vec{0}$):
+\begin{equation}
+    \vec{a}_B = -\omega_1^2 \vec{r}_{AB} = \begin{bmatrix} -0,9642 \\ -1,1491 \\ 0 \end{bmatrix} \text{ m/s}^2
+\end{equation}
+
+A (2) rúdon a C pont gyorsulása kifejezhető a B pontból relatív gyorsulással:
+\begin{equation}
+    \vec{a}_C = \vec{a}_B + \vec{\varepsilon}_2 \times \vec{r}_{BC} - \omega_2^2 \vec{r}_{BC} \label{eq:ac_from_b}
+\end{equation}
+
+A (3) kerék tiszta gördülést végez egy $R=3r_3$ sugarú hengerfelületen. A kerék $S_3$ súlypontja így $R+r_3$ sugarú körpályán mozog, ezért normális gyorsulása (mely a görbületi középpont felé mutat):
+\begin{equation}
+    a_{S_3, n} = \frac{v_{S_3}^2}{R+r_3}
+\end{equation}
+A C pont gyorsulása kifejezhető a 3-as kerék $S_3$ pontjából is:
+\begin{equation}
+    \vec{a}_C = \vec{a}_{S_3} + \vec{\varepsilon}_3 \times \vec{r}_{S_3 C} - \omega_3^2 \vec{r}_{S_3 C} \label{eq:ac_from_s3}
+\end{equation}
+A \eqref{eq:ac_from_b} és \eqref{eq:ac_from_s3} egyenletek egyenlővé tételével egy 2 ismeretlenes ($\varepsilon_{2z}$, $\varepsilon_{3z}$) lineáris egyenletrendszert kapunk az $x$ és $y$ komponensekre. Ennek megoldása adja a keresett szöggyorsulásokat: $\varepsilon_{2z} = 1,9471 \text{ rad/s}^2$ és $\varepsilon_{3z} = 28,3829 \text{ rad/s}^2$.
+
+Az $S_2$ pont gyorsulása az aszimmetrikus (2) test B pontjából:
+\begin{equation}
+    \vec{a}_{S_2} = \vec{a}_B + \vec{\varepsilon}_2 \times \vec{r}_{BS_2} - \omega_2^2 \vec{r}_{BS_2} = \begin{bmatrix} -1,2685 \\ -1,1225 \\ 0 \end{bmatrix} \text{ m/s}^2, \quad |\vec{a}_{S_2}| = 1,6938 \text{ m/s}^2
+\end{equation}
+
+\subsection{Gyorsulásvektorok (5. feladat)}
+\begin{figure}[H]
+    \centering
+    \input{contents/fig_gyorsulas.tex}
+    \caption{Gyorsulásvektorok}
+\end{figure}
+
+\subsection{Gyorsulásszög és gyorsuláspólus (6. feladat)}
+A (2) test gyorsulásszöge az iránytangens alapján:
+\begin{equation}
+    \alpha_2 = \arctan \left( \frac{|\varepsilon_2|}{\omega_2^2} \right) = 28,56^\circ
+\end{equation}
+A gyorsuláspólus ($G_2$) helyvektora a B pontból számítva, a képlet alapján:
+\begin{equation}
+    \vec{r}_{BG_2} = \frac{\omega_2^2 \vec{a}_B + \vec{\varepsilon}_2 \times \vec{a}_B}{\omega_2^4 + \varepsilon_2^2} \implies G_2(-0,0345; -0,3151) \text{ m}
+\end{equation}
+
+\section{Pálya jellemzői (7., 8. feladat)}
+\subsection{Érintő és normális gyorsulás komponensek (7. feladat)}
+Az $S_2$ pont pályamenti érintő (tangenciális) egységvektora a sebesség iránya:
+\begin{equation}
+    \vec{e}_t = \frac{\vec{v}_{S_2}}{|\vec{v}_{S_2}|}
+\end{equation}
+Ezzel a tangenciális gyorsuláskomponens nagysága és vektora skaláris szorzatként:
+\begin{equation}
+    a_{S_2, t} = \vec{a}_{S_2} \cdot \vec{e}_t = 0,8093 \text{ m/s}^2, \quad \vec{a}_{S_2, t} = \begin{bmatrix} -0,7607 \\ 0,2762 \\ 0 \end{bmatrix} \text{ m/s}^2
+\end{equation}
+A normális gyorsuláskomponens vektorkivonással adódik:
+\begin{equation}
+    \vec{a}_{S_2, n} = \vec{a}_{S_2} - \vec{a}_{S_2, t} = \begin{bmatrix} -0,5078 \\ -1,3987 \\ 0 \end{bmatrix} \text{ m/s}^2, \quad |\vec{a}_{S_2, n}| = 1,4880 \text{ m/s}^2
+\end{equation}
+
+\subsection{Görbületi sugár (8. feladat)}
+Az $S_2$ pont pályájának görbületi sugara a normális gyorsulás és a sebesség összefüggéséből számítható:
+\begin{equation}
+    \rho_{S_2} = \frac{|\vec{v}_{S_2}|^2}{|\vec{a}_{S_2, n}|} = 0,0228 \text{ m}
+\end{equation}
+
 \end{document}

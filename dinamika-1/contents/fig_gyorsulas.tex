@@ -1,0 +1,54 @@
+\begin{tikzpicture}[>=Stealth, thick]
+    \def\sc{35}
+    \def\asc{1.5} % Gyorsulás vektor skálázása
+    
+    \coordinate (A) at (0*\sc, 0*\sc);
+    \coordinate (B) at (0.03857*\sc, 0.04596*\sc);
+    \coordinate (C) at (0.17604*\sc, 0.10596*\sc);
+    \coordinate (S3) at (0.21069*\sc, 0.08596*\sc);
+    \coordinate (K) at (0.21069*\sc, 0.04596*\sc);
+    \coordinate (S2) at (0.10731*\sc, 0.07596*\sc);
+    \coordinate (Ocyl) at (0.21069*\sc, -0.07404*\sc);
+    
+    \coordinate (G2) at (-0.03448*\sc, -0.31505*\sc);
+    
+    % Vektorok
+    \coordinate (aB) at (-0.96418*\asc, -1.14907*\asc);
+    \coordinate (aC) at (-1.57274*\asc, -1.09600*\asc);
+    \coordinate (aS2) at (-1.26846*\asc, -1.12253*\asc);
+    \coordinate (aS2t) at (-0.76067*\asc, 0.27616*\asc);
+    \coordinate (aS2n) at (-0.50779*\asc, -1.39869*\asc);
+    
+    % Henger
+    \draw[very thick, fill=gray!20, draw=gray!50] (Ocyl) ++(140:0.12*\sc) arc[start angle=140, end angle=40, radius=0.12*\sc];
+
+    % Szerkezet halványan
+    \draw[line width=3pt, gray!30] (A) -- (B) -- (C);
+    \draw[line width=2pt, gray!30, fill=white] (S3) circle (0.04*\sc);
+    
+    \supporthinge[draw=gray!50]{A}{0}
+    \hinge[draw=gray!50]{A}
+    \hinge[draw=gray!50]{B}
+    \hinge[draw=gray!50]{C}
+    \fill[gray!50] (S2) circle (0.08);
+    
+    % Gyorsuláspólus
+    \fill[black] (G2) circle (0.08) node[below] {$G_2$};
+    \draw[dashed, gray] (B) -- (G2);
+    \draw[dashed, gray] (C) -- (G2);
+    \draw[dashed, gray] (S2) -- (G2);
+    
+    % Gyorsulásvektorok
+    \draw[vec=red] (B) -- ($(B) + (aB)$) node[left] {$\vec{a}_B$};
+    \draw[vec=red] (C) -- ($(C) + (aC)$) node[below] {$\vec{a}_C$};
+    \draw[vec=red] (S2) -- ($(S2) + (aS2)$) node[left] {$\vec{a}_{S_2}$};
+    
+    % Komponensek
+    \draw[vec=orange] (S2) -- ($(S2) + (aS2t)$) node[above right] {$\vec{a}_{S_2t}$};
+    \draw[vec=purple] (S2) -- ($(S2) + (aS2n)$) node[below right] {$\vec{a}_{S_2n}$};
+
+    % Pontok jelölése
+    \node[above left, gray] at (B) {$B$};
+    \node[above right, gray] at (C) {$C$};
+    \node[above, gray] at (S2) {$S_2$};
+\end{tikzpicture}

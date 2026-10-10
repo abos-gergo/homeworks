@@ -1,0 +1,49 @@
+\begin{tikzpicture}[>=Stealth, thick]
+    \def\sc{35}
+    \def\vsc{7} % Sebesség vektor skálázása
+    
+    \coordinate (A) at (0*\sc, 0*\sc);
+    \coordinate (B) at (0.03857*\sc, 0.04596*\sc);
+    \coordinate (C) at (0.17604*\sc, 0.10596*\sc);
+    \coordinate (S3) at (0.21069*\sc, 0.08596*\sc);
+    \coordinate (K) at (0.21069*\sc, 0.04596*\sc);
+    \coordinate (S2) at (0.10731*\sc, 0.07596*\sc);
+    \coordinate (Ocyl) at (0.21069*\sc, -0.07404*\sc);
+    \coordinate (P2) at (0.14053*\sc, 0.16748*\sc);
+    
+    % Vektorok
+    \coordinate (vB) at (-0.22981*\vsc, 0.19284*\vsc);
+    \coordinate (vC) at (-0.11634*\vsc, -0.06717*\vsc);
+    \coordinate (vS2) at (-0.17308*\vsc, 0.06283*\vsc);
+    
+    % Henger
+    \draw[very thick, fill=gray!20, draw=gray!50] (Ocyl) ++(140:0.12*\sc) arc[start angle=140, end angle=40, radius=0.12*\sc];
+
+    % Szerkezet halványan
+    \draw[line width=3pt, gray!30] (A) -- (B) -- (C);
+    \draw[line width=2pt, gray!30, fill=white] (S3) circle (0.04*\sc);
+    
+    \supporthinge[draw=gray!50]{A}{0}
+    \hinge[draw=gray!50]{A}
+    \hinge[draw=gray!50]{B}
+    \hinge[draw=gray!50]{C}
+    \fill[gray!50] (S2) circle (0.08);
+    \fill[gray!50] (K) circle (0.08);
+    
+    % P2 és vonalak
+    \fill[black] (P2) circle (0.08) node[above] {$P_2$};
+    \draw[dashed, gray] (B) -- (P2);
+    \draw[dashed, gray] (C) -- (P2);
+    \draw[dashed, gray] (K) -- (P2);
+    \draw[dashed, gray] (S2) -- (P2);
+    
+    % Sebességvektorok
+    \draw[vec=blue] (B) -- ($(B) + (vB)$) node[left] {$\vec{v}_B$};
+    \draw[vec=blue] (C) -- ($(C) + (vC)$) node[below right] {$\vec{v}_C$};
+    \draw[vec=blue] (S2) -- ($(S2) + (vS2)$) node[above left] {$\vec{v}_{S_2}$};
+    
+    % Pontok jelölése
+    \node[above left, gray] at (B) {$B$};
+    \node[above right, gray] at (C) {$C$};
+    \node[below, gray] at (S2) {$S_2$};
+\end{tikzpicture}
