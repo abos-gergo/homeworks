@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage[a4paper,margin=0pt]{geometry}
+\usepackage{pdfpages}
+\usepackage{tikz}
+\usepackage{newtxtext,newtxmath}
+
+\begin{document}
+\includepdf[pages=1,pagecommand={%
+    \begin{tikzpicture}[remember picture, overlay]
+        \coordinate (nw) at (current page.north west);
+        \node[anchor=west, font=\fontsize{12}{14}\selectfont] at ([xshift=440pt, yshift=-41pt]nw) {Abos Gerg\H{o}};
+        \begin{scope}[shift={(nw)}]
+            \input{signature.tex}
+        \end{scope}
+        \node[anchor=center, font=\fontsize{12}{14}\selectfont] at ([xshift=92.40pt, yshift=-776.64pt]nw) {$-1{,}8913$};
+        \node[anchor=center, font=\fontsize{12}{14}\selectfont] at ([xshift=161.04pt, yshift=-776.64pt]nw) {$1{,}9471$};
+        \node[anchor=center, font=\fontsize{12}{14}\selectfont] at ([xshift=229.68pt, yshift=-776.64pt]nw) {$0{,}1841$};
+        \node[anchor=center, font=\fontsize{12}{14}\selectfont] at ([xshift=298.32pt, yshift=-776.64pt]nw) {$1{,}6938$};
+        \node[anchor=center, font=\fontsize{12}{14}\selectfont] at ([xshift=366.96pt, yshift=-776.64pt]nw) {$0{,}8093$};
+        \node[anchor=center, font=\fontsize{12}{14}\selectfont] at ([xshift=435.60pt, yshift=-776.64pt]nw) {$1{,}4880$};
+        \node[anchor=center, font=\fontsize{12}{14}\selectfont] at ([xshift=504.24pt, yshift=-776.64pt]nw) {$0{,}0228$};
+    \end{tikzpicture}%
+}]{Taskpage_orig.pdf}
+\end{document}

@@ -5,7 +5,7 @@
     \coordinate (B) at (0.03857*\sc, 0.04596*\sc);
     \coordinate (C) at (0.17604*\sc, 0.10596*\sc);
     \coordinate (S3) at (0.21069*\sc, 0.08596*\sc);
-    \coordinate (K) at (0.21069*\sc, 0.04596*\sc);
+    \coordinate (D) at (0.21069*\sc, 0.04596*\sc);
     \coordinate (S2) at (0.10731*\sc, 0.07596*\sc);
     \coordinate (Ocyl) at (0.21069*\sc, -0.07404*\sc);
     
@@ -16,14 +16,14 @@
     \supporthinge{A}{0}
     
     % Rudak
-    \draw[line width=3pt, gray!80] (A) -- (B) node[midway, above left, text=black] {1};
-    \draw[line width=3pt, gray!80] (B) -- (C) node[midway, above, text=black] {2};
+    \draw[line width=3pt, gray!80] (A) -- (B) node[midway, above left, text=black] {(1)};
+    \draw[line width=3pt, gray!80] (B) -- (C) node[midway, below, text=black] {(2)};
     
     % Kerék
     \draw[line width=2pt, fill=white] (S3) circle (0.04*\sc);
-    \node at (S3) [yshift=15pt] {3};
-    \draw[line width=2pt, gray!80] (S3) -- (C);
-    \draw[line width=1pt, gray!80] (S3) -- (K);
+    \node at (S3) [yshift=15pt] {(3)};
+    \draw[line width=1pt, gray!80] (S3) -- (C);
+    \draw[line width=1pt, gray!80] (S3) -- (D);
     
     % Csuklók és pontok
     \hinge{A}
@@ -31,13 +31,13 @@
     \hinge{C}
     \fill[black] (S3) circle (0.08) node[right, xshift=2pt] {$S_3$};
     \fill[black] (S2) circle (0.08) node[above, yshift=2pt] {$S_2$};
-    \fill[black] (K) circle (0.08) node[below, yshift=-2pt] {$K$};
+    \fill[black] (D) circle (0.08) node[below, yshift=-2pt] {$D$};
 
     % Feliratok
     \node[below left, xshift=-5pt] at (A) {$A$};
     \node[above left] at (B) {$B$};
-    \node[above right] at (C) {$C$};
+    \node[above left] at (C) {$C$};
     
     % Omega_1 nyíl
-    \draw[arc vec=red] (A) ++(30:0.8) arc[start angle=30, end angle=120, radius=0.8] node[above] {$\omega_1$};
+    \draw[arc vec=red, ->] (A) ++(30:0.8) arc[start angle=30, end angle=120, radius=0.8] node[above left] {$\omega_1$};
 \end{tikzpicture}
